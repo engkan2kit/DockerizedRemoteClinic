@@ -1,0 +1,4 @@
+.env
+/conf/letsencrypt
+/conf/certs
+/vscode

@@ -1,0 +1,41 @@
+version: '3.9'
+services:
+    nginx:
+        container_name: clinica_nginx
+        restart: always
+        depends_on:
+            - php
+            - mysql
+        volumes:
+            - "./RemoteClinic/:/var/www/html/"
+        ports:
+            - 80:80
+            - 443:443
+    php:
+        build: ./dockerfiles/php-fpm
+        container_name: clinica_php
+        restart: always
+        volumes:
+            - type: bind
+              source: "./conf/php/"
+              target: "/usr/local/etc/php/conf.d/"
+            - type: bind
+              source: "./RemoteClinic/"
+              target: "/var/www/html/"
+            - type: bind
+              source: "./.env"
+              target: "/srv/conf/conf.env"
+    mysql:
+        image:  mysql:5.7
+        container_name: clinica_mysql
+        restart: always
+        environment:
+            - MYSQL_ROOT_PASSWORD=${CLINIC_DB_PASS}
+            - MYSQL_DATABASE=${CLINIC_DB_NAME}
+        ports:
+          - '3306:3306'
+        volumes:
+          - clinica-db-data:/var/lib/mysql
+          - ./RemoteClinic/remoteclinic.sql:/docker-entrypoint-initdb.d/init.sql
+volumes:
+  clinica-db-data:

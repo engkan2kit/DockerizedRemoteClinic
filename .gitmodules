@@ -1,0 +1,3 @@
+[submodule "RemoteClinic"]
+	path = RemoteClinic
+	url = https://github.com/engkan2kit/RemoteClinic.git
