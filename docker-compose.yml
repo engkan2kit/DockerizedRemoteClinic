@@ -4,14 +4,14 @@ services:
         container_name: clinica_nginx
         restart: always
         depends_on:
-            - php
+            - clinica_php
             - mysql
         volumes:
             - "./RemoteClinic/:/var/www/html/"
         ports:
             - 80:80
             - 443:443
-    php:
+    clinica_php:
         build: ./dockerfiles/php-fpm
         container_name: clinica_php
         restart: always

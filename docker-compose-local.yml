@@ -7,7 +7,7 @@ services:
         container_name: clinica_nginx
         restart: always
         depends_on:
-            - php
+            - clinica_php
             - mysql
         environment:
           - CERT_DOMAIN=${DOMAIN_NAME}
