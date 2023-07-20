@@ -5,7 +5,7 @@ Remote CLinic Dockerized
 RemoteClinic is a submodule of this project, so a recursive clone or git submodule command is needed.
 
 ```
-git clone https://github.com/engkan2kit/RemoteClinicDockerized.git
+git clone [https://github.com/engkan2kit/RemoteClinicDockerized.git](https://github.com/engkan2kit/DockerizedRemoteClinic.git)
 git submodute init --update
 ```
 
